@@ -1,3 +1,5 @@
+<style src="../styles/viewstyles.css"></style>
+
 <template>
   <div class="home">
     <v-container class="mt-2">
@@ -71,17 +73,4 @@ export default {
 };
 </script>
 
-<style scoped>
- .question-author {
-   font-weight: bold;
-   color: #DC3545;
- }
- .question-link {
-   color: black;
- }
- .question-link:hover {
-   color: #343A40;
-   text-decoration: none;
- }
 
-</style>
