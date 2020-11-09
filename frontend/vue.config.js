@@ -1,10 +1,14 @@
-// module.exports = {
-//   transpileDependencies: ["vuetify"]
-// };
-
 const BundleTracker = require("webpack-bundle-tracker");
 
 module.exports = {
+
+    devServer: {
+        https: {
+           key: fs.readFileSync('../path/to/server.key'),
+           cert: fs.readFileSync('../path/to/server.crt'),
+           ca: fs.readFileSync('../path/to/ca.pem'),
+         }
+       },
     // on Windows you might want to set publicPath: "http://127.0.0.1:8080/" 
     transpileDependencies: ["vuetify"],
     publicPath: "http://127.0.0.1:8080/", 
