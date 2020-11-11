@@ -4,7 +4,7 @@ module.exports = {
     // on Windows you might want to set publicPath: "http://127.0.0.1:8080/" 
     transpileDependencies: ["vuetify"],
     publicPath: "http://127.0.0.1:8080/", 
-    outputDir: './dist/',
+    outputDir: '/dist/',
 
     chainWebpack: config => {
 
