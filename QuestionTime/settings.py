@@ -16,13 +16,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jtnwb)m+7bj7g*9z0((1i8!quf^acnxj0$95%62)aoj3ps+h3a'
+SECRET_KEY = 'yhq_r=vobr4u2x$br4n--=1=#)q3x%-2e3#vcq+lvo%mh-z(7w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://questbackend-1.herokuapp.com/']
+ALLOWED_HOSTS = ['questbackend-1.herokuapp.com','*']
+
 
 
 # Application definition
@@ -175,3 +175,4 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
     }
 }
+
