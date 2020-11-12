@@ -8,7 +8,9 @@
         >not_listed_location
         </v-icon>
           <v-toolbar-title class="text-uppercase white--text">
-               <span class="font-weight-light">Quest</span>
+               <span class="font-weight-light">
+                 <a class="logo" href="https://questbackend-1.herokuapp.com/home">Quest
+                 </a></span>
           </v-toolbar-title>
 
           <v-spacer></v-spacer>
@@ -20,3 +22,9 @@
     </v-app-bar>
 </nav>
 </template>
+<style>
+  a.logo {
+    text-decoration: none;
+    color: white;
+  }
+</style>
