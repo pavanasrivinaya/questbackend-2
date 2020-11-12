@@ -25,6 +25,12 @@
 import { apiService } from "@/common/api.service.js";
 export default {
   name: "QuestionEditor",
+  props: {
+    slug: {
+      type: String,
+      required: false
+    }
+  },
   data() {
     return {
       question_body: null,
@@ -49,6 +55,15 @@ export default {
             })          
           })  
       }
+    }
+  },
+  async beforeRouteEnter(to, from, next) {
+    if (to.params.slug !== undefined) {
+      let endpoint = `/api/questions/${ to.params.slug }/`;
+      let data = await apiService(endpoint);
+      return next(vm => (vm.question_body = data.content))
+    } else {
+      return next();
     }
   },
   created() {
