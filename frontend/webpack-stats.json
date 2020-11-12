@@ -1,1 +1,1 @@
-{"status":"done","publicPath":"","chunks":{"app":[{"name":"bundle.css","publicPath":"","path":"F:\\vuetifyapps\\quest\\QuestionTime\\frontend\\dist\\bundle.js"}]}}
+{"status":"done","publicPath":"https://questbackend-1.herokuapp.com/static/bundle.css","chunks":{"app":[{"name":"bundle.css","publicPath":"https://questbackend-1.herokuapp.com/static/bundle.js","path":"F:\\vuetifyapps\\quest\\QuestionTime\\frontend\\dist\\bundle.js"}]}}
