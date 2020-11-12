@@ -1,4 +1,4 @@
-<style src="../styles/viewstyles.css"></style>
+<style src="styles/viewstyles.css"></style>
 
 <template>
   <div class="home">
