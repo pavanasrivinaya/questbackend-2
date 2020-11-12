@@ -46,7 +46,11 @@ export default {
         this.error = "Ensure this field has no more than 240 characters!";
       } else {
         let endpoint = "/api/questions/";
-        let method = "POST";    
+        let method = "POST";
+        if (this.slug !== undefined) {
+          endpoint += `${ this.slug }/`;
+          method = "PUT";
+        }     
         apiService(endpoint, method, { content: this.question_body })
           .then(question_data => {
             this.$router.push({ 
