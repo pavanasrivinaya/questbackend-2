@@ -57,14 +57,15 @@ export default {
       }
     }
   },
-  async beforeRouteEnter(to, from, next) {
+   async beforeRouteEnter(to, from, next) {
+    // if the component will be used to update a question, then get the question's data from the REST API
     if (to.params.slug !== undefined) {
       let endpoint = `/api/questions/${ to.params.slug }/`;
       let data = await apiService(endpoint);
       return next(vm => (vm.question_body = data.content))
     } else {
       return next();
-    }
+    }   
   },
   created() {
     document.title = "Editor - QuestionTime";
