@@ -38,7 +38,7 @@ class Answer(models.Model):
 
     updated_at = models.DateTimeField(auto_now=True)
 
-    body = models.TextField()
+    body = models.TextField(max_length=255)
 
     question = models.ForeignKey(Question,
 
