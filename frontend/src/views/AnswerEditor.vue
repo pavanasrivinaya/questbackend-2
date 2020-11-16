@@ -1,19 +1,24 @@
 <template>
   <div class="container mt-2">
     <h1 class="mb-3">Edit Your Answer</h1>
-    <form @submit.prevent="onSubmit">
-      <textarea 
+    <v-form @submit.prevent="onSubmit" ref="form"
+    v-model="valid"
+    lazy-validation>
+      <v-textarea 
         v-model="answerBody" 
         class="form-control" 
         rows="3"
-      ></textarea>
+        :counter="300"
+        :rules= "textarearules"
+        required
+      ></v-textarea>
       <br>
-      <button 
+      <v-btn
         type="submit" 
-        class="btn btn-success"
+        class="success"
         >Publish your answer
-      </button>
-    </form>
+      </v-btn>
+    <v-form>
     <p v-if="error" class="muted mt-2">{{ error }}</p>
   </div>
 </template>
@@ -32,7 +37,12 @@ export default {
     return {
       questionSlug: null,
       answerBody: null,
-      error: null
+      error: null,
+      valid: true,
+      textarearules: [
+        v => !!v || 'Answer is required',
+        v => (v && v.length <= 300) || 'Answer must be less than 300 characters',
+      ],
     }
   },
   methods: {
