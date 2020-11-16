@@ -16,7 +16,7 @@
       <v-btn
         type="submit" 
         class="success"
-        >Publish your answer
+        >Publish yours answer
       </v-btn>
     <v-form>
     <p v-if="error" class="muted mt-2">{{ error }}</p>
