@@ -21,7 +21,7 @@ SECRET_KEY = 'yhq_r=vobr4u2x$br4n--=1=#)q3x%-2e3#vcq+lvo%mh-z(7w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['questbackend-1.herokuapp.com','*']
+ALLOWED_HOSTS = ['questbackend-2.herokuapp.com','*']
 
 
 
