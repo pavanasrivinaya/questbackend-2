@@ -1,49 +1,56 @@
 <style src="../styles/viewstyles.css"></style>
 
 <template>
-  <div class="single-question mt-2">
-    <div v-if="question" class="container">
+  <v-container class="mt-2">
+    <v-container v-if="question" >
       <h1>{{ question.content }}</h1>
       <QuestionActions
         v-if="isQuestionAuthor"
         :slug="question.slug"
       />
       <p class="mb-0">Posted by:
-        <span class="author-name">{{ question.author }}</span>
+        <span class="author-name">{{ question.author }}</span>                                  
       </p>
       <p>{{ question.created_at }}</p>
       <hr>
       <div v-if="userHasAnswered">
-        <p class="answer-added">You've written an answer!</p>
+        <v-alert  dense
+      text
+      type="success">
+You've written an answer!  
+  </v-alert>
+        <!-- <p class="answer-added">You've written an answer!</p> -->
       </div>
-      <div v-else-if="showForm">
-        <form class="card" @submit.prevent="onSubmit">
-          <div class="card-header px-3">
+      <v-container v-else-if="showForm">
+         <v-col>
             Answer the Question
-          </div>
-          <div class="card-block">
-            <textarea 
+          </v-col>
+        <v-form  @submit.prevent="onSubmit" ref="form" v-model="valid" lazy-validation>
+         
+            <v-textarea 
               v-model="newAnswerBody"
-              class="form-control"
               placeholder="Share Your Knowledge!"
-              rows="5"
-            ></textarea>
-          </div>
-          <div class="card-footer px-3">
-            <button type="submit" class="btn btn-sm btn-success">Submit Your Answer</button>
-          </div>
-        </form>
+              :counter= "240"
+              :rules= "textarearules"
+              auto-grow
+              outlined
+              shaped
+            ></v-textarea>
+            <v-btn type="submit" :disabled="!valid" color="primary white--text text  btr"
+               @click="validate" rounded>Submit Your Answer.</v-btn>
+        </v-form>
         <p v-if="error" class="error mt-2">{{ error }}</p>
-      </div>
+      </v-container>
       <div v-else>
-        <button
-          class="btn btn-sm btn-success"
+        <v-btn
+          color="white--text text-center primary"
           @click="showForm = true"
-          >Answer the Question
-        </button>
+          btr
+          rounded>Answer the Question
+        </v-btn>
       </div>
       <hr>
-    </div>
+    </v-container>
     <div v-else>
       <h1 class="error text-center">404 - Question Not Found</h1>
     </div>
@@ -65,7 +72,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -94,7 +101,12 @@ export default {
       error: null,
       userHasAnswered: false,
       showForm: false,
-      requestUser: null
+      requestUser: null,
+      valid: true,
+      textarearules: [
+        v => !!v || 'Answer is required',
+        v => (v && v.length <= 240) || 'Answer must be less than 240 characters',
+      ],
     }
   },
   computed: {
@@ -104,6 +116,15 @@ export default {
     }
   },
   methods: {
+    validate () {
+        this.$refs.form.validate()
+      },
+      reset () {
+        this.$refs.form.reset()
+      },
+      resetValidation () {
+        this.$refs.form.resetValidation()
+      },
     setPageTitle(title) {
       // set a given title string as the webpage title
       document.title = title;

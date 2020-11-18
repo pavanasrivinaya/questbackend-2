@@ -41,3 +41,15 @@
   .btn:focus {
     box-shadow: none !important;
   }
+
+  .btr {
+    text-transform: none;
+    font-weight: normal;     
+  }
+  .v-btn__content{
+    /* font-weight: 300;
+    font-size:15px; */
+    text-transform: none;
+    font-weight: normal;    
+}
+

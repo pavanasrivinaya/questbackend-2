@@ -1,26 +1,24 @@
 <template>
-  <div class="container mt-2">
+  <v-container>
     <h1 class="mb-3">Edit Your Answer</h1>
-    <v-form @submit.prevent="onSubmit" ref="form"
-    v-model="valid"
-    lazy-validation>
+    <v-form @submit.prevent="onSubmit" ref="form" v-model="valid" lazy-validation>
       <v-textarea 
         v-model="answerBody" 
-        class="form-control" 
-        rows="3"
-        :counter="300"
+        :counter="255"
         :rules= "textarearules"
         required
+        auto-grow
+        outlined
+        row-height="25"
+        shaped
       ></v-textarea>
-      <br>
-      <v-btn
-        type="submit" 
-        class="success"
-        >Publish yours-- answer
-      </v-btn>
-    <v-form>
+       <v-btn type="submit" :disabled="!valid"
+                        color="primary white--text text-center"
+                        class="mr-4 mb-3"
+                        @click="validate" rounded>Publish your answer</v-btn> 
+    </v-form>
     <p v-if="error" class="muted mt-2">{{ error }}</p>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -36,12 +34,12 @@ export default {
   data() {
     return {
       questionSlug: null,
-      answerBody: null,
+      answerBody: '',
       error: null,
       valid: true,
       textarearules: [
         v => !!v || 'Answer is required',
-        v => (v && v.length <= 300) || 'Answer must be less than 300 characters',
+        v => (v && v.length <= 255) || 'Answer must be less than 300 characters',
       ],
     }
   },
@@ -59,7 +57,16 @@ export default {
       } else {
         this.error = "You can't submit an empty answer!";
       }
-    }
+    },
+    validate () {
+        this.$refs.form.validate()
+      },
+      reset () {
+        this.$refs.form.reset()
+      },
+      resetValidation () {
+        this.$refs.form.resetValidation()
+      },
   },
   async beforeRouteEnter(to, from, next) {
     // get the answer's data from the REST API and set two data properties for the component

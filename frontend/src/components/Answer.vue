@@ -1,22 +1,42 @@
 <template>
-  <div class="single-answer">
+  <v-container>
     <p class="text-muted">
       <strong>{{ answer.author }}</strong> &#8901; {{ answer.created_at }}
     </p>
-    <p>{{ answer.body }}</p>
-    <div v-if="isAnswerAuthor">
+    <v-container class="ansbody">
+      <v-row>{{ answer.body }}</v-row>
+      
+    </v-container>
+    <v-container v-if="isAnswerAuthor">
       <router-link
         :to="{ name: 'answer-editor', params: { id: answer.id } }"
-        class="btn btn-sm btn-outline-secondary mr-1"
-        >Edit
+        > <v-btn
+      class="mx-2"
+      fab
+      dark
+      small
+      color="primary"
+    >
+      <v-icon dark>
+        mdi-pencil
+      </v-icon>
+    </v-btn>
       </router-link>
-      <button
-        class="btn btn-sm btn-outline-danger"
-        @click="triggerDeleteAnswer"
-        >Delete
-      </button>
-    </div>
-    <div v-else>      
+      <v-btn
+      class="mx-2"
+      fab
+      dark
+      small
+      color="pink"
+       @click="triggerDeleteAnswer"
+    >
+      <v-icon dark>
+        mdi-delete
+      </v-icon>
+    </v-btn>
+    </v-container>
+    <div v-else>   
+     
       <button
         class="btn btn-sm"
         @click="toggleLike"
@@ -25,10 +45,10 @@
           'btn-outline-danger': !userLikedAnswer
           }"
         ><strong>Like [{{ likesCounter }}]</strong>
-      </button>
+      </button> 
     </div>
     <hr>
-  </div>
+  </v-container>
 </template>
 
 <script>

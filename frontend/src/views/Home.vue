@@ -1,8 +1,7 @@
 <style src="../styles/viewstyles.css"></style>
 
 <template>
-  <div class="home">
-    <v-container class="mt-2">
+  <v-container class="home mt-2">
       <v-card class="mx-auto" max-width="1000">
         <v-card-text>
           <div v-for="question in questions" :key="question.pk">
@@ -34,7 +33,6 @@
         </v-card-text>
       </v-card>
     </v-container>
-  </div>
 </template>
 
 <script>

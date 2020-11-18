@@ -1,23 +1,24 @@
 <template>
  <v-container>
-  <div class="container mt-2">
     <h1 class="mb-3">Ask a Question</h1>
-    <form @submit.prevent="onSubmit">
-      <textarea
+    <v-form @submit.prevent="onSubmit" ref="form" v-model="valid" lazy-validation>
+      <v-textarea
         v-model="question_body"
-        class="form-control"
         placeholder="What do you want to ask?"
         rows="3"
-      ></textarea>
-      <br>
-      <button
-        type="submit"
-        class="btn btn-success"
-        >Publish
-      </button>
-    </form>
+        :counter= "240"
+        :rules= "textarearules"
+        auto-grow
+        outlined
+        row-height="25"
+        shaped
+      ></v-textarea>
+      <v-btn type="submit" :disabled="!valid"
+        color="primary white--text text-center"
+        class="mr-4 mb-3"
+        @click="validate" rounded>Publish</v-btn> 
+    </v-form>
     <p v-if="error" class="muted mt-2">{{ error }}</p>
-  </div>
   </v-container>
 </template>
 
@@ -34,7 +35,12 @@ export default {
   data() {
     return {
       question_body: null,
-      error: null
+      error: null,
+       valid: true,
+      textarearules: [
+        v => !!v || 'Answer is required',
+        v => (v && v.length <= 240) || 'Answer must be less than 240 characters',
+      ],
     }
   },
   methods: {
@@ -59,7 +65,16 @@ export default {
             })          
           })  
       }
-    }
+    },
+    validate () {
+        this.$refs.form.validate()
+      },
+      reset () {
+        this.$refs.form.reset()
+      },
+      resetValidation () {
+        this.$refs.form.resetValidation()
+      },
   },
    async beforeRouteEnter(to, from, next) {
     // if the component will be used to update a question, then get the question's data from the REST API

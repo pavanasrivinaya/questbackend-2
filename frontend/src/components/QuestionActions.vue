@@ -1,15 +1,33 @@
 <template>
   <div class="question-actions">
     <router-link
-      :to="{name: 'question-editor', params: {slug: slug}}"
-      class="btn btn-sm btn-outline-secondary mr-1"
-      >Edit
+      :to="{ name: 'question-editor', params: { slug: slug } }"
+      ><v-btn
+      class="mx-2"
+      fab
+      dark
+      small
+      color="primary">
+      <v-icon dark>
+          mdi-pencil
+      </v-icon>
+    </v-btn>
     </router-link>
-    <button
-      class="btn btn-sm btn-outline-danger"
+
+    
+    <v-btn
       @click="deleteQuestion"
-      >Delete
-    </button>
+      class="mx-2"
+      fab
+      dark
+      small
+      color="pink"
+    >
+      <v-icon dark>
+        mdi-delete
+      </v-icon>
+    </v-btn>
+ 
   </div>  
 </template>
 
