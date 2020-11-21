@@ -10,7 +10,7 @@
         <p>
           <v-toolbar-title  class="text-uppercase white--text mt-3">
 
-                 <a class="logo" href="http://127.0.0.1:8000/">
+                 <a class="logo" href="https://questbackend-2.herokuapp.com/">
                 Quest
             </a>
             </v-toolbar-title>

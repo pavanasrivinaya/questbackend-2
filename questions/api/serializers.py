@@ -3,7 +3,7 @@ from rest_framework import serializers
 from questions.models import Answer, Question
 
 
-
+from rest_framework.serializers import ValidationError
 
 
 class AnswerSerializer(serializers.ModelSerializer):
@@ -95,3 +95,11 @@ class QuestionSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
 
         return instance.answers.filter(author=request.user).exists()
+
+    
+    def validate(self, data):
+        content = data['content']
+        body = Question.objects.filter(content=content)
+        if body.exists():
+            raise ValidateError("This question has already exists")
+        return data

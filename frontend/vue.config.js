@@ -42,3 +42,5 @@ module.exports = {
     }
 
 };
+
+//{"status":"done","publicPath":"http://127.0.0.1:8000/","chunks":{"app":[{"name":"bundle.css","publicPath":"http://127.0.0.1:8000/static/bundle.css","path":"F:\\vuetifyapps\\quest\\QuestionTime\\frontend\\dist\\bundle.css"},{"name":"bundle.js","publicPath":"http://127.0.0.1:8000/static/bundle.js","path":"F:\\vuetifyapps\\quest\\QuestionTime\\frontend\\dist\\bundle.js"},{"name":"bundle.css.map","publicPath":"http://127.0.0.1:8000/static/bundle.css.map","path":"F:\\vuetifyapps\\quest\\QuestionTime\\frontend\\dist\\bundle.css.map"},{"name":"bundle.js.map","publicPath":"http://127.0.0.1:8000/static/bundle.js.map","path":"F:\\vuetifyapps\\quest\\QuestionTime\\frontend\\dist\\bundle.js.map"}]}}

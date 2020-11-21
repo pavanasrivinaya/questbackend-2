@@ -39,7 +39,8 @@ You've written an answer!
             <v-btn type="submit" :disabled="!valid" color="primary white--text text  btr"
                @click="validate" rounded>Submit Your Answer.</v-btn>
         </v-form>
-        <p v-if="error" class="error mt-2">{{ error }}</p>
+          <v-alert v-if="error" type="error" class="mt-2">{{ error }}</v-alert>
+        <!-- <p v-if="error" class="error mt-2">{{ error }}</p> -->
       </v-container>
       <div v-else>
         <v-btn
@@ -52,7 +53,11 @@ You've written an answer!
       <hr>
     </v-container>
     <div v-else>
-      <h1 class="error text-center">404 - Question Not Found</h1>
+        <v-alert type="error">
+          Question already exists.Ask another question
+        <a href="https://questbackend-2.herokuapp.com/ask" rel="noopener" class="text-center">Ask a new question</a>
+    </v-alert>
+
     </div>
     <div v-if="question" class="container">
       <AnswerComponent 

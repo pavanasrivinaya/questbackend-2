@@ -18,6 +18,10 @@
         class="mr-4 mb-3"
         @click="validate" rounded>Publish</v-btn> 
     </v-form>
+    <div v-for="question in questions" :key="question.pk">
+      <h1>{{ question.content }}</h1>
+
+    </div>
     <p v-if="error" class="muted mt-2">{{ error }}</p>
   </v-container>
 </template>
@@ -34,6 +38,7 @@ export default {
   },
   data() {
     return {
+      questions: [],
       question_body: null,
       error: null,
        valid: true,

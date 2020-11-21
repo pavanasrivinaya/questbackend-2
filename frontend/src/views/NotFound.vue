@@ -1,7 +1,9 @@
 <template>
   <div class="not-found">
     <div class="container mt-3">
-      <h1 id="notfound">{{ message }}</h1>
+        <v-alert type="error">
+          {{ message }}
+    </v-alert>
     </div>
   </div>  
 </template>

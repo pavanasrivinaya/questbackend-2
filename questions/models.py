@@ -12,7 +12,7 @@ class Question(models.Model):
 
     updated_at = models.DateTimeField(auto_now=True)
 
-    content = models.CharField(max_length=240)
+    content = models.CharField(max_length=240, unique=True)
 
     slug = models.SlugField(max_length=255, unique=True)
 
@@ -27,6 +27,8 @@ class Question(models.Model):
     def __str__(self):
 
         return self.content
+
+
 
 
 

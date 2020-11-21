@@ -36,7 +36,6 @@ class AnswerCreateAPIView(generics.CreateAPIView):
 
 
 class AnswerListAPIView(generics.ListAPIView):
-
     """Provide the answers queryset of a specific question instance."""
 
     serializer_class = AnswerSerializer
@@ -115,11 +114,7 @@ class AnswerLikeAPIView(APIView):
 
 
         serializer_context = {"request": request}
-
         serializer = self.serializer_class(answer, context=serializer_context)
-
-
-
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -131,3 +126,4 @@ class AnswerLikeAPIView(APIView):
 
 
 
+    
